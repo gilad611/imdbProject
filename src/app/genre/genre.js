@@ -13,18 +13,19 @@ angular.module('App.genre', [])
         };
 
         $scope.getMoviesByGenre = function () {
-                $scope.movieData = _.findWhere(moviesService.getMovies(), {Genre: $scope.movieGenre});
-                if($scope.movieData){
-                    $scope.movieReady = true;
-                }else {
-                    getMoviesByGenreFail();
-                }
+            $scope.movieData = _.findWhere(moviesService.getMovies(), {Genre: $scope.movieGenre});
+            if($scope.movieData){
+                $scope.movieReady = true;
+            }
+            else{
+                getMoviesByGenreFail();
+            }
 
             return $scope.movieData;
         };
 
         function getMoviesByGenreFail(reason) {
-            alertService.add('warning', 'Ooops! No genre was found. ' + reason);
+            alertService.add('warning', 'Oops! No genre was found. ' + reason);
         }
 
         $scope.init();

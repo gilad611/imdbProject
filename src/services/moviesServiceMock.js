@@ -1,7 +1,13 @@
 angular.module('App.mocks',[])
     .service("moviesServiceMock", function () {
         var self = this;
-        self.factory = {};
+
+        self.getMovies = function () {
+            //Can use $http object to retrieve remote data
+            //in a "real" app
+            return self.movies;
+        };
+
         self.movies = [
             {
                 "Title": "Kill Bill: Vol. 1",
@@ -444,10 +450,5 @@ angular.module('App.mocks',[])
                 "Response": "True"
             }];
 
-        self.getMovies = function () {
-            //Can use $http object to retrieve remote data
-            //in a "real" app
-            return self.movies;
-        };
-        return self.factory;
+        return self;
     });

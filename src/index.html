@@ -17,34 +17,32 @@
     <body ng-controller="AppController">
         <!-- navbar -->
         <nav class="navbar navbar-default" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">imdbProject</a>
-                </div>
-                </div>
-
-                <div class="collapse navbar-collapse" collapse="navCollapsed">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a ui-sref="movies">Movies</a></li>
-                        <!--<genre-dropdown genres="genres"></genre-dropdown>-->
-                        <li dropdown on-toggle="toggled(open)">
-                                <a href="#" id="simple-dropdown" dropdown-toggle>Genres <span class="caret"></span></a>
-                              <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
-                                  <li ng-repeat="genre in genres"><a ui-sref="genre({genre: genre})">{{genre}}</a></li>
-                              </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <input type="text" ng-model="movieName" class="form-control" placeholder="Search By Movie Name">
-                        </li>
-                        <li><a ui-sref="search({movieName: movieName})" class="glyphicon glyphicon-search"></a></li>
-                    </ul>
-                </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">imdbProject</a>
+            </div>
+            <div class="collapse navbar-collapse" collapse="navCollapsed">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a ui-sref="movies">Movies</a></li>
+                    <!--<genre-dropdown genres="genres"></genre-dropdown>-->
+                    <li dropdown on-toggle="toggled(open)">
+                            <a href="#" id="simple-dropdown" dropdown-toggle>Genres <span class="caret"></span></a>
+                          <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
+                              <li ng-repeat="genre in genres"><a ui-sref="genre({genre: genre})">{{genre}}</a></li>
+                          </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <input type="text" ng-model="movieName" class="form-control" placeholder="Search By Movie Name">
+                    </li>
+                    <li><a ui-sref="search({movieName: movieName})" class="glyphicon glyphicon-search"></a></li>
+                </ul>
+            </div>
         </nav>
         <!-- end navbar -->
 

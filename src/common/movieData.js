@@ -2,7 +2,7 @@
  * Created by Gilad on 27/08/2015.
  */
 angular.module('App.common', [])
-    .controller('movieDataController', function(){
+    .controller('movieDataController', function($scope){
 
         $scope.init = function(){
             $scope.filterBy = '';
