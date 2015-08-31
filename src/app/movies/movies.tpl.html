@@ -1,0 +1,12 @@
+<div class="row-fluid">
+    <div ng-repeat="movieData in filteredMovies">
+            <div class="col col-lg-2 col-md-3 col-sm-4 col-xs-4" items-per-page-by-class>
+                <movie-data movie-data="movieData" ng-if="movieReady"></movie-data> <!-- inject shortMovieData.tpl.html via directive -->
+            </div>
+    </div>
+</div>
+<div class="row">
+    <footer class="col col-lg-12 text-center">
+        <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+    </footer>
+</div>

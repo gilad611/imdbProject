@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="App">
+<head>
+    <title>IMDB Movies App</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,  maximum-scale=1, user-scalable=no">
+    <!-- compiled CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/styles/compiled.css"/>
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/slate/bootstrap.css"/>
+
+    <!-- compiled JavaScript -->
+    <% scripts.forEach( function ( file ) { %><script type="text/javascript" src="<%= file %>"></script>
+    <% }); %>
+</head>
+    <body ng-controller="AppController">
+        <!-- navbar -->
+        <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">imdbProject</a>
+                </div>
+                </div>
+
+                <div class="collapse navbar-collapse" collapse="navCollapsed">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a ui-sref="movies">Movies</a></li>
+                        <!--<genre-dropdown genres="genres"></genre-dropdown>-->
+                        <li dropdown on-toggle="toggled(open)">
+                                <a href="#" id="simple-dropdown" dropdown-toggle>Genres <span class="caret"></span></a>
+                              <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
+                                  <li ng-repeat="genre in genres"><a ui-sref="genre({genre: genre})">{{genre}}</a></li>
+                              </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <input type="text" ng-model="movieName" class="form-control" placeholder="Search By Movie Name">
+                        </li>
+                        <li><a ui-sref="search({movieName: movieName})" class="glyphicon glyphicon-search"></a></li>
+                    </ul>
+                </div>
+        </nav>
+        <!-- end navbar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="error-message">
+                <alert dismiss-on-timeout='2000' ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" ng-cloak>{{ alert.msg }}</alert>
+            </div>
+            <div ui-view="mainContent" class="anim-in-out anim-swap anim-fade anim-slide-right" data-anim-speed="500"></div>
+        </div>
+        <!-- /#page-assets-wrapper -->
+</body>
+</html>
