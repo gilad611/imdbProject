@@ -6,7 +6,6 @@ var App = angular.module("App", [
     'templates-common',
     'ui.router',
     'ngAnimate',
-    'ngSanitize',
     'ui.bootstrap',
     'anim-in-out',
     'App.routes',
@@ -20,6 +19,7 @@ var App = angular.module("App", [
                 $scope.alerts = alertService.get();
                 $scope.genres = moviesService.getAllGenres();
                 $rootScope.isMocked = true;
+                $scope.navCollapsed = true;
             };
 
             $scope.closeAlert = function (index) {
@@ -27,4 +27,21 @@ var App = angular.module("App", [
             };
 
             $scope.init();
-    }]);
+    }])
+
+    .directive('navbarToggle', function ($timeout) {
+        return {
+            restrict: 'A',
+            scope: {
+                collapsed:'=navCollapsed'
+            },
+            link: function(scope, element, attr){
+                $timeout(function () {
+                    element.on('click', function () {
+                        scope.collapsed = true;
+                    });
+                });
+            }
+        };
+    });
+

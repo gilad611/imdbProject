@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
-        <movie-data class="pull-left" movie-data="movieData" ng-if="movieReady"></movie-data> <!-- inject shortMovieData.tpl.html via directive -->
-        <a class="btn btn-default" ui-sref="movies">Back to Movies</a>
+        <!-- inject shortMovieData.tpl.html via directive -->
+        <short-movie-data class="pull-left" movie-data="movieData" ng-if="movieReady"></short-movie-data>
+        <a class="btn btn-default" ng-click="back()">Back</a>
     </div>
 </div>

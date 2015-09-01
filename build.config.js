@@ -75,7 +75,7 @@ module.exports = {
         'vendor/angular-moment/angular-moment.js',
         'vendor/angular-google-maps/dist/angular-google-maps.js',
         'vendor/angular-ui-router-anim-in-out/anim-in-out.js',
-        'vendor/lodash/lodash.js'
+        'vendor/lodash/dist/lodash.js'
     ],
     css: [
         'vendor/angular-ui-router-anim-in-out/css/anim-in-out.css'

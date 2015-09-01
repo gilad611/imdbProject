@@ -25,9 +25,9 @@ angular.module('App.movie',[])
             return $scope.movieData;
         };
 
-        //alert if weather $http failed to find city
+        //alert if searchByName failed to find movie
         function getMovieByNameFail(reason) {
-            alertService.add('warning', 'Ooops! No movie was found. ' + reason);
+            alertService.add('warning', 'Oops! No movie was found. ' + reason);
         }
 
         $scope.init();

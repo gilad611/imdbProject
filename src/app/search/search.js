@@ -2,7 +2,8 @@
  * Created by Gilad on 27/08/2015.
  */
 angular.module('App.search', [])
-    .controller('searchController', ['$scope', '$stateParams', 'moviesService', 'alertService', function ($scope, $stateParams, moviesService, alertService) {
+    .controller('searchController', ['$scope', '$stateParams', 'moviesService', 'alertService',
+        function ($scope, $stateParams, moviesService, alertService) {
 
         $scope.init = function () {
 

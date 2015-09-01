@@ -18,7 +18,7 @@
         <!-- navbar -->
         <nav class="navbar navbar-default" role="navigation">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                <button type="button" class="togl navbar-toggle" ng-click="navCollapsed = !navCollapsed">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -28,7 +28,6 @@
             <div class="collapse navbar-collapse" collapse="navCollapsed">
                 <ul class="nav navbar-nav">
                     <li class="active"><a ui-sref="movies">Movies</a></li>
-                    <!--<genre-dropdown genres="genres"></genre-dropdown>-->
                     <li dropdown on-toggle="toggled(open)">
                             <a href="#" id="simple-dropdown" dropdown-toggle>Genres <span class="caret"></span></a>
                           <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
@@ -51,7 +50,7 @@
             <div class="error-message">
                 <alert dismiss-on-timeout='2000' ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" ng-cloak>{{ alert.msg }}</alert>
             </div>
-            <div ui-view="mainContent" class="anim-in-out anim-swap anim-fade anim-slide-right" data-anim-speed="500"></div>
+            <div ui-view="mainContent" class="anim-in-out anim-swap anim-fade anim-slide-right" data-anim-speed="500" navbar-toggle collapsed="navCollapsed"></div>
         </div>
         <!-- /#page-assets-wrapper -->
 </body>

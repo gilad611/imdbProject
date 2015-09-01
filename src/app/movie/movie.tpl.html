@@ -2,8 +2,22 @@
     <div class="well">
         <div class="row">
             <!-- inject allMovieData.tpl.html via directive -->
-            <all-movie-data class="pull-left" movie-data="movieData" ng-if="movieReady"></all-movie-data>
-            <a class="btn btn-default" ui-sref="movies">Back to Movies</a>
+                <div class="pull-left col-lg-6" ng-if="movieReady">
+                    <div class="row">
+                        <div class="col col-lg-6">
+                            <div class="center-block"><img class="img-responsive center-block" ng-src="{{ movieData.Poster }}"></div>
+                        </div>
+                        <div class="col col-lg-6">
+                            <p><h4><u>{{movieData.Title}}</u></h4></p><hr>
+                            <p><strong>Year:</strong> {{movieData.Year}}</p>
+                            <p><strong>Writer:</strong> {{movieData.Writer}}</p><hr>
+                            <p><strong>Plot:</strong> {{movieData.Plot}}</p><hr>
+                            <p><strong>Genre: </strong>{{movieData.Genre}}</p>
+                            <p><strong>IMDB Rating:</strong>{{movieData.imdbRating}}</p>
+                        </div>
+                    </div>
+                </div>
+            <a class="btn btn-default" ng-click="back()">Back</a>
         </div>
     </div>
 </div>
