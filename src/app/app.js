@@ -32,13 +32,10 @@ var App = angular.module("App", [
     .directive('navbarToggle', function ($timeout) {
         return {
             restrict: 'A',
-            scope: {
-                collapsed:'=navCollapsed'
-            },
             link: function(scope, element, attr){
-                $timeout(function () {
-                    element.on('click', function () {
-                        scope.collapsed = true;
+                element.on('click', function () {
+                    scope.$apply(function(){
+                        scope.navCollapsed = true;
                     });
                 });
             }

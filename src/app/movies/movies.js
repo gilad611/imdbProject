@@ -2,7 +2,8 @@
  * Created by Gilad on 27/08/2015.
  */
 angular.module('App.movies', [])
-    .controller('moviesController', ['$scope', '$log', 'alertService', 'moviesService', function ($scope, $log, alertService, moviesService) {
+    .controller('moviesController', ['$scope', '$log', 'alertService', 'moviesService',
+        function ($scope, $log, alertService, moviesService) {
 
         $scope.init = function () {
             $scope.movieReady = false;
@@ -12,7 +13,6 @@ angular.module('App.movies', [])
             $scope.totalItems = _.size($scope.movies);
             $scope.currentPage = 1;
             $scope.itemsPerPage = 12;
-
         };
 
         $scope.getMovies = function () {
@@ -26,7 +26,7 @@ angular.module('App.movies', [])
         };
 
         function getMoviesFail(reason) {
-            alertService.add('warning', 'Ooops! No movies were found. ' + reason);
+            alertService.add('warning', 'Oops! No movies were found. ' + reason);
         }
 
         //bootstrap-ui pagination

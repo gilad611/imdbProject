@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,  maximum-scale=1, user-scalable=no">
     <!-- compiled CSS -->
     <link rel="stylesheet" type="text/css" href="assets/styles/compiled.css"/>
-    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/slate/bootstrap.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="https://bootswatch.com/slate/bootstrap.css"/>-->
 
     <!-- compiled JavaScript -->
     <% scripts.forEach( function ( file ) { %><script type="text/javascript" src="<%= file %>"></script>
@@ -46,11 +46,11 @@
         <!-- end navbar -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" navbar-toggle>
             <div class="error-message">
                 <alert dismiss-on-timeout='2000' ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" ng-cloak>{{ alert.msg }}</alert>
             </div>
-            <div ui-view="mainContent" class="anim-in-out anim-swap anim-fade anim-slide-right" data-anim-speed="500" navbar-toggle collapsed="navCollapsed"></div>
+            <div ui-view="mainContent" class="anim-in-out anim-swap anim-fade anim-slide-right" data-anim-speed="500" collapsed="navCollapsed"></div>
         </div>
         <!-- /#page-assets-wrapper -->
 </body>

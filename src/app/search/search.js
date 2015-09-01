@@ -29,7 +29,7 @@ angular.module('App.search', [])
 
         //alert if weather $http failed to find city
         function getMovieByNameFail(reason) {
-            alertService.add('warning', 'Ooops! No movie was found. ' + reason);
+            alertService.add('warning', 'Oops! No movie was found. ' + reason);
         }
 
         $scope.init();

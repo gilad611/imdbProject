@@ -2,7 +2,8 @@
  * Created by Gilad on 27/08/2015.
  */
 angular.module('App.genre', [])
-    .controller('genreController', ['$scope', 'alertService', 'moviesService', '$stateParams', function ($scope, alertService, moviesService, $stateParams) {
+    .controller('genreController', ['$scope', 'alertService', 'moviesService', '$stateParams',
+        function ($scope, alertService, moviesService, $stateParams) {
 
         $scope.init = function () {
             if ($stateParams.genre) {
