@@ -2,7 +2,7 @@
  * Created by Gilad on 27/08/2015.
  */
 angular.module('App.search', [])
-    .controller('searchController', ['$scope', '$stateParams', 'moviesService', 'alertService',
+    .controller('SearchCtrl', ['$scope', '$stateParams', 'moviesService', 'alertService',
         function ($scope, $stateParams, moviesService, alertService) {
 
         $scope.init = function () {
@@ -16,15 +16,16 @@ angular.module('App.search', [])
         };
 
         $scope.searchByName = function () {
-            moviesService.getMovieByName($scope.movieName).then(function (d) {
-                $scope.movieData = d.data;
+            moviesService.getMovieByName($scope.movieName, function(movies){
+            if (movies) {
+                $scope.movies = moviesService.renderGenre(movies);
                 $scope.movieReady = true;
-                if ($scope.movieData.Response === 'False'){
-                    getMovieByNameFail($scope.movieData.Error);
-                    $scope.movieReady = false;
-                }
-            }).catch(getMovieByNameFail);
-            return $scope.movieData;
+            }
+            else{
+                getMovieByNameFail();
+            }
+        });
+            return $scope.movies;
         };
 
         //alert if weather $http failed to find city

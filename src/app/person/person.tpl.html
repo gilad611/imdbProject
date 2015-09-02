@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="well">
+        <div class="row">
+            <!-- inject allMovieData.tpl.html via directive -->
+                <div class="pull-left col-lg-12" ng-if="personReady">
+                    <div class="row">
+                        <div class="col col-lg-4">
+                            <div class="center-block"><img class="img-responsive center-block" ng-src="{{ 'http://image.tmdb.org/t/p/w500/'+person.profile_path }}"></div><hr>
+                        </div>
+                        <div class="col col-lg-4">
+                            <p><h3><u>{{person.name}}</u></h3></p><hr>
+                            <p><strong>Birthday: </strong>{{person.birthday}}</p>
+                            <p><strong>Place of birth: </strong>{{person.place_of_birth}}</p>
+                            <p><strong>Homepage: </strong>{{person.homepage}}</p>
+                        </div>
+                        <div class="col col-lg-4">
+                            <div class="well">
+                                <h5>Biography</h5>
+                                <p>{{person.biography}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <a class="btn btn-default" ng-click="back()">Back</a>
+        </div>
+    </div>
+</div>

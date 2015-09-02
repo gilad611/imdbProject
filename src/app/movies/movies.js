@@ -2,7 +2,7 @@
  * Created by Gilad on 27/08/2015.
  */
 angular.module('App.movies', [])
-    .controller('moviesController', ['$scope', '$log', 'alertService', 'moviesService',
+    .controller('MoviesCtrl', ['$scope', '$log', 'alertService', 'moviesService',
         function ($scope, $log, alertService, moviesService) {
 
         $scope.init = function () {
@@ -16,13 +16,15 @@ angular.module('App.movies', [])
         };
 
         $scope.getMovies = function () {
-            $scope.movies = moviesService.getMovies();
-            if($scope.movies){
-                $scope.movieReady = true;
-            }
-            else {
-                getMoviesFail('no movies found');
-            }
+            moviesService.getAllMovies(function(movies){
+                if (movies) {
+                    $scope.movies = moviesService.renderGenre(movies);
+                    $scope.movieReady = true;
+
+                }else {
+                    getMoviesFail('no movies found');
+                }
+            });
         };
 
         function getMoviesFail(reason) {
@@ -48,8 +50,9 @@ angular.module('App.movies', [])
         $scope.$watch('currentPage + itemsPerPage', function() {
             var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
                 end = begin + $scope.itemsPerPage;
-
-            $scope.filteredMovies = $scope.movies.slice(begin, end);
+            if ($scope.movies){
+                $scope.filteredMovies = $scope.movies.slice(begin, end);
+            }
         });
 
         $scope.init();

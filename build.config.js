@@ -73,9 +73,9 @@ module.exports = {
         'vendor/angular-bootstrap/ui-bootstrap.js',
         'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
         'vendor/angular-moment/angular-moment.js',
-        'vendor/angular-google-maps/dist/angular-google-maps.js',
         'vendor/angular-ui-router-anim-in-out/anim-in-out.js',
-        'vendor/lodash/dist/lodash.js'
+        'vendor/lodash/lodash.js',
+        'vendor/angular-youtube-mb/dist/angular-youtube-embed.min.js'
     ],
     css: [
         'vendor/angular-ui-router-anim-in-out/css/anim-in-out.css'

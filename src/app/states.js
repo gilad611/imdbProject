@@ -6,7 +6,9 @@ angular.module('App.routes', [
     'App.search',
     'App.genre',
     'App.movies',
-    'App.movie'
+    'App.movie',
+    'App.trailer',
+    'App.cast'
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state('root', {
@@ -19,38 +21,58 @@ angular.module('App.routes', [
         views: {
             'mainContent@': {
                 templateUrl: 'movies/movies.tpl.html',
-                controller: 'moviesController'
+                controller: 'MoviesCtrl'
             }
         }
     })
     .state('movie', {
-        url: 'movies/movie:movieName',
+        url: 'movies/movie:movieId',
         parent: 'root',
         views: {
             'mainContent@': {
                 templateUrl: 'movie/movie.tpl.html',
-                controller: 'movieController'
+                controller: 'MovieCtrl'
             }
         }
     })
-
+    .state('trailer', {
+        url: 'movies/movie/trailer:movieId',
+        parent: 'root',
+        views: {
+            'mainContent@': {
+                templateUrl: 'trailer/trailer.tpl.html',
+                controller: 'TrailerCtrl'
+            }
+        }
+    })
     .state('search', {
         url: 'search:movieName',
         parent: 'root',
         views: {
             'mainContent@': {
                 templateUrl: 'search/search.tpl.html',
-                controller: 'searchController'
+                controller: 'SearchCtrl'
             }
         }
     })
     .state('genre', {
-        url: 'genre:genre',
+            url: 'genre:genre',
+            parent: 'root',
+            views: {
+                'mainContent@': {
+                    templateUrl: 'genre/genre.tpl.html',
+                    controller: 'GenreCtrl'
+                }
+            }
+        })
+
+    .state('person', {
+        url: 'person:personId',
         parent: 'root',
         views: {
             'mainContent@': {
-                templateUrl: 'genre/genre.tpl.html',
-                controller: 'genreController'
+                templateUrl: 'person/person.tpl.html',
+                controller: 'PersonCtrl'
             }
         }
     });
@@ -68,6 +90,11 @@ angular.module('App.routes', [
         });
         //back button function called from back button's ng-click="back()"
         $rootScope.back = function() {
-            $state.go($rootScope.previousState_name,$rootScope.previousState_params);
+            if ($rootScope.previousState_name && $rootScope.previousState_params){
+                $state.go($rootScope.previousState_name,$rootScope.previousState_params);
+            }
+            else {
+                $state.go('movies');
+            }
         };
     }]);

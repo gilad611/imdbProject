@@ -8,6 +8,7 @@ var App = angular.module("App", [
     'ngAnimate',
     'ui.bootstrap',
     'anim-in-out',
+    'youtube-embed',
     'App.routes',
     'App.services',
     'App.common'
@@ -17,7 +18,9 @@ var App = angular.module("App", [
         function ($scope, $rootScope, alertService, moviesService) {
             $scope.init = function () {
                 $scope.alerts = alertService.get();
-                $scope.genres = moviesService.getAllGenres();
+                moviesService.getGenresNames(function(genres){
+                    $scope.genres = genres;
+                });
                 $rootScope.isMocked = true;
                 $scope.navCollapsed = true;
             };
@@ -34,11 +37,37 @@ var App = angular.module("App", [
             restrict: 'A',
             link: function(scope, element, attr){
                 element.on('click', function () {
-                    scope.$apply(function(){
-                        scope.navCollapsed = true;
-                    });
+                    if (scope.navCollapsed == false){
+                        scope.$apply(function(){
+                            scope.navCollapsed = true;
+                        });
+                    }
                 });
             }
         };
-    });
+    })
+    .directive('myLoading',   ['$http' ,function ($http)
+    {
+        return {
+            restrict: 'E',
+            template:  '<div class="loading">'+
+            '<img class="img-responsive img-circle" src="assets/images/loading.gif">'+
+            '</div>',
+            link: function (scope, elm, attrs)
+            {
+                scope.isLoading = function () {
+                    return $http.pendingRequests.length > 0;
+                };
+
+                scope.$watch(scope.isLoading, function (v)
+                {
+                    if(v){
+                        elm.show();
+                    }else{
+                        elm.hide();
+                    }
+                });
+            }
+        };
+    }]);
 

@@ -1,10 +1,10 @@
 <div class="panel panel-default">
     <div class="panel-body">
-        <div class="img-wrapper center-block"><a ui-sref="movie({movieName: movieData.Title})"><img class="img-responsive center-block" ng-src="{{ movieData.Poster }}"></a></div>
+        <div class="img-wrapper center-block"><a ui-sref="movie({movieId: movieData.id})"><img class="img-responsive center-block" ng-src="{{ 'http://image.tmdb.org/t/p/w500/'+movieData.Poster }}"></a></div>
     </div>
     <div class="panel-footer">
         <p><h4>{{movieData.Title}}</h4></p>
-        <p>Genre: <b>{{movieData.Genre}}</b></p>
+        <p>Genre: <b><span ng-repeat="genre in movieData.GenreNames">{{genre}} </span></b></p>
         <p>IMDB Rating: <b>{{movieData.imdbRating}}</b></p>
     </div>
 </div>
