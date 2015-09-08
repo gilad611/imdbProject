@@ -2,55 +2,60 @@
  * Created by Gilad on 27/08/2015.
  */
 angular.module('App.movie',[])
-    .controller('MovieCtrl', ['$scope', '$stateParams', 'alertService', 'moviesService',
-        function ($scope, $stateParams, alertService, moviesService) {
+    .controller('MovieCtrl', ['$scope', '$stateParams', 'alertService', 'dataService',
+        function ($scope, $stateParams, alertService, dataService) {
 
-        $scope.init = function () {
-        //check if movie id in ui-sref is valid and call search function
-            if ($stateParams.movieId) {
-                $scope.movieId = $stateParams.movieId;
-                $scope.getMovieById();
-                $scope.getMovieCastByMovieId();
-            }
+
+        /***
+         * get movie data by movie id
+         * @param movieId
+         */
+        var getMovieById = function (movieId) {
+            dataService.getMovieByMovieId(movieId, function(err, movie){
+
+                if (err){
+                    alertService.add('warning', 'Oops! No movie was found. ' + err);
+                    console.log(err);
+                    return;
+                }
+                if (movie){
+                    $scope.movieData = _.first(movie);
+                    $scope.movieReady = true;
+                }
+            });
+        };
+
+        /***
+         * get movie cast data by movie id
+         * @param movieId
+         */
+        var getMovieCastByMovieId = function (movieId) {
+            dataService.getMovieCastByMovieId(movieId, function(err, movie){
+                if (err){
+                    alertService.add('warning', 'Oops! No movie was found. ' + err);
+                    console.log(err);
+                    return;
+                }
+                if (movie){
+                    $scope.cast = movie;
+                    $scope.movieReady = true;
+                }
+            });
+        };
+
+        /***
+         * init
+         */
+        var init = function () {
             $scope.movieReady = false;
+            //check if movie id in ui-sref is valid and call search function
+            if ($stateParams.movieId) {
+                getMovieById($stateParams.movieId);
+                getMovieCastByMovieId($stateParams.movieId);
+            }
         };
 
-        $scope.getMovieById = function () {
-            moviesService.getMovieByMovieId($scope.movieId, function(movie){
-                if (movie){
-                    $scope.movieData = movie[0];
-                    $scope.movieReady = true;
-                }
-                else{
-                    getMovieByMovieIdFail();
-                }
-            });
-            return $scope.movieData;
-        };
-
-        $scope.getMovieCastByMovieId = function () {
-            moviesService.getMovieCastByMovieId($scope.movieId, function(movie){
-                if (movie){
-                    $scope.cast = movie.cast;
-                    $scope.movieReady = true;
-                }
-                else{
-                    getMovieCastByMovieId();
-                }
-            });
-            return $scope.cast;
-        };
-
-        //alert if getMovieByMovieIdFail failed to find movie
-        function getMovieByMovieIdFail(reason) {
-            alertService.add('warning', 'Oops! No movie was found. ' + reason);
-        }
-        //alert if getMovieByMovieIdFail failed to find movie
-        function getMovieCastByMovieId(reason) {
-            alertService.add('warning', 'Oops! No movie cast was found. ' + reason);
-        }
-
-        $scope.init();
+        init();
 
     }]);
 

@@ -1,27 +1,68 @@
-<div class="container">
+<div class="container" ng-if="personReady">
+    <!-- start well -->
     <div class="well">
         <div class="row">
-            <!-- inject allMovieData.tpl.html via directive -->
-                <div class="pull-left col-lg-12" ng-if="personReady">
-                    <div class="row">
-                        <div class="col col-lg-4">
-                            <div class="center-block"><img class="img-responsive center-block" ng-src="{{ 'http://image.tmdb.org/t/p/w500/'+person.profile_path }}"></div><hr>
-                        </div>
-                        <div class="col col-lg-4">
-                            <p><h3><u>{{person.name}}</u></h3></p><hr>
-                            <p><strong>Birthday: </strong>{{person.birthday}}</p>
-                            <p><strong>Place of birth: </strong>{{person.place_of_birth}}</p>
-                            <p><strong>Homepage: </strong>{{person.homepage}}</p>
-                        </div>
-                        <div class="col col-lg-4">
-                            <div class="well">
-                                <h5>Biography</h5>
-                                <p>{{person.biography}}</p>
-                            </div>
-                        </div>
+            <!-- person img column -->
+            <div class="col col-lg-4">
+                    <img class="img-responsive center-block"
+                         fallback-src ng-src="{{ person.profile_path }}"/><hr>
+            </div>
+            <!-- /person img column -->
+
+            <!-- person data column -->
+            <div class="col col-lg-4">
+                <!-- person name -->
+                <p>
+                    <h3><u>{{person.name}}</u></h3>
+                </p><hr>
+                <!-- person birthday -->
+                <p ng-if="person.birthday">
+                    <strong>{{'BIRTHDAY' | translate}}: </strong>
+                    {{person.birthday}}
+                </p>
+                <!-- person place of birth -->
+                <p ng-if="person.place_of_birth">
+                    <strong>{{'BIRTH PLACE' | translate}}: </strong>
+                    {{person.place_of_birth}}
+                </p>
+                <!-- person homepage -->
+                <p ng-if="person.homepage">
+                    <strong>{{'HOME PAGE' | translate}}: </strong>
+                    {{person.homepage}}
+                </p><hr>
+                <!-- person biography -->
+                <h5><u>{{'BIOGRAPHY' | translate}}</u></h5>
+                <p>{{person.biography}}</p>
+            </div>
+            <!-- /person data column -->
+
+            <!-- person movie credits data column -->
+            <div class="col col-lg-4">
+                <div class="well">
+                    <p ng-if="creditsReady">
+                        <!-- credits title -->
+                        <strong><u>{{'MOVIE CREDITS' | translate}}</u></strong>
+                    </p><hr>
+                    <!-- movies credits -->
+                    <div class="component photogrid center-block clearfix">
+                        <!-- ngRepeat - display all movies person participated in -->
+                        <a ui-sref="movie({movieId: credits.id})" ng-repeat="credits in movieCredits">
+                            <img fallback-src
+                                 data-toggle="tooltip"
+                                 ng-src="{{ 'http://image.tmdb.org/t/p/w500'+credits.poster_path }}"
+                                 alt="{{credits.title}}"
+                                 tooltip-trigger="mouseenter"
+                                 tooltip="{{credits.title}}. Character: {{credits.character}}"
+                                 class="img-rounded"/>
+                        </a>
                     </div>
                 </div>
-            <a class="btn btn-default" ng-click="back()">Back</a>
+            </div>
+            <!-- /person movie credits data column -->
         </div>
     </div>
+    <!-- end well -->
+
+    <!-- go back button -->
+    <a class="btn btn-block center-block" ng-click="back()">{{'BACK' | translate}}</a>
 </div>

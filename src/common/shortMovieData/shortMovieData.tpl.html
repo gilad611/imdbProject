@@ -1,0 +1,18 @@
+<div class="panel-default">
+    <div class="img-wrapper center-block" >
+        <a ui-sref="movie({movieId: movieData.id})">
+            <img class="img-responsive img-rounded center-block" fallback-src ng-src="{{ movieData.Poster }}"/>
+            <p class="imgDescription"><small><rating ng-model="movieData.imdbRating" max="10" readonly="true" on-leave="overStar = null"></rating></small></p>
+        </a>
+    </div>
+    <div class="text-center">
+        <p data-toggle="tooltip" tooltip-trigger="mouseenter" tooltip="{{movieData.Title}}"><strong>{{movieData.Title | characters:15:true}}</strong></p>
+        <p>
+            <span ng-repeat="genre in ::movieData.Genre |limitTo:2">
+                <small> {{::genre.name}}</small>
+            </span>
+            <span ng-if="movieData.Genre.length > 3">...</span>
+        </p>
+    </div>
+</div>
+

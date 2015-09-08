@@ -1,0 +1,30 @@
+﻿{
+  "TITLE": "Imdb פרוייקט",
+  "GENRES": "סוג",
+  "MOVIES": "סרטים",
+  "SEARCH": "חפש לפי שם הסרט",
+  "POPULAR": "פופולארי",
+  "NOW PLAYING": "עכשיו בקולנוע",
+  "TOP RATED": "בעלי ציון הכי גבוה",
+  "UPCOMING": "בקרוב בקולנוע",
+  "BACK": "חזור",
+  "BACK_PAGINATION": "הקודם",
+  "NEXT": "הבא",
+  "BIRTHDAY": "תאריך לידה",
+  "BIRTH PLACE": "מיקום לידה",
+  "HOME PAGE": "דף הבית",
+  "BIOGRAPHY": "ביוגרפיה",
+  "MOVIE CREDITS": "קרדיט של סרט",
+  "YEAR": "שנה",
+  "PLOT": "עלילה",
+  "IMDB RATING": "ציון",
+  "CAST MEMBERS": "שחקנים",
+  "WATCH TRAILER": "צפה בטריילר",
+  "WARNING": "אזהרה",
+  "REMEMBER ME": "זכור אותי",
+  "OVER 18": "אני מעל 18",
+  "DISMISS": "ביטול",
+  "WARNING MSG": "התוכן הבא מוגבל לגילאי 18 ומעלה בלבד."
+
+}
+

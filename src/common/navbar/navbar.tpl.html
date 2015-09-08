@@ -1,0 +1,90 @@
+<nav class="navbar navbar-default" role="navigation" outside-click="navCollapsed = true"  ng-controller="NavbarCtrl">
+
+    <!-- header -->
+    <div class="navbar-header">
+
+        <!-- collapse navbar toggle button (auto-display on small screens) -->
+        <a class="togl navbar-toggle" ng-click="navCollapsed = !navCollapsed">
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </a>
+
+        <!-- app title -->
+        <a class="navbar-brand" href="#">{{'TITLE' | translate}}</a>
+    </div>
+    <!-- end header -->
+
+    <!-- collapsable navbar (auto-callapse on small screens)-->
+    <div class="collapse navbar-collapse" collapse="navCollapsed">
+
+        <!-- left-side bar -->
+        <ul class="nav navbar-nav">
+
+            <!-- movies dropdown menu -->
+            <li class="active" dropdown on-toggle="toggled(open)">
+                <a href="#" id="simple-dropdown1" dropdown-toggle>
+                    {{'MOVIES' | translate}}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="simple-dropdown1">
+                    <li><a ui-sref="movies({movies: 'Popular'})">{{'POPULAR' | translate}}</a></li>
+                    <li><a ui-sref="movies({movies: 'NowPlaying'})">{{'NOW PLAYING' | translate}}</a></li>
+                    <li><a ui-sref="movies({movies: 'TopRated'})">{{'TOP RATED' | translate}}</a></li>
+                    <li><a ui-sref="movies({movies: 'Upcoming'})">{{'UPCOMING' | translate}}</a></li>
+                </ul>
+            </li>
+            <!-- end movies dropdown menu -->
+
+            <!-- genres dropdown menu -->
+            <li dropdown on-toggle="toggled(open)">
+                <a href="#" id="simple-dropdown" dropdown-toggle>{{'GENRES' | translate}}<span class="caret"></span></a>
+                <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
+                    <!-- for each genere -->
+                    <li ng-repeat="genre in genres track by genre.id">
+                        <a ui-sref="genre({genre: genre.id})">{{genre.name}}</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- end genres dropdown menu -->
+
+        </ul>
+        <!-- end left-side bar -->
+
+        <!-- right-side bar -->
+        <ul class="nav navbar-nav navbar-right">
+
+            <!-- languages buttons -->
+            <li>
+                <!-- english button -->
+                <a ng-click="changeLanguage('en')">
+                    <span class="lang-sm lang-lbl" lang="en"></span>
+                </a>
+            </li>
+            <li>
+                <!-- hebrew button -->
+                <a ng-click="changeLanguage('he')">
+                <span class="lang-sm lang-lbl" lang="iw"></span>
+                </a>
+            </li>
+            <!-- end languages buttons -->
+
+            <!-- search bar -->
+            <li>
+                <!-- search input -->
+                <form class="form-group">
+                    <input type="text"
+                           ng-model="movieName"
+                           class="form-control"
+                           placeholder="{{'SEARCH' | translate}}"
+                           ng-enter="searchOnEnterKeyPress(movieName)">
+                </form>
+            </li>
+            <li>
+                <!-- search button -->
+                <a ui-sref="search({movieName: movieName})" class="glyphicon glyphicon-search"></a>
+            </li>
+            <!-- end search bar -->
+        </ul>
+        <!-- end right-side bar -->
+    </div>
+    <!-- end collapsable navbar -->
+</nav>

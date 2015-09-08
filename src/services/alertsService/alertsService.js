@@ -1,5 +1,5 @@
 
-angular.module('App.services',['App.mocks'])
+angular.module('App.services')
     .service('alertService', function () {
         var self = this;
 

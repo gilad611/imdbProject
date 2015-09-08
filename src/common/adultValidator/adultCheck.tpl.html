@@ -1,0 +1,16 @@
+<div ng-class="rtl ? 'rtl' : ''" class="modal-body">
+    <!-- warning massages -->
+    <h1><u>{{'WARNING' | translate}}</u></h1>
+    <p>{{'WARNING MSG'| translate}}</p>
+</div>
+<div class="modal-footer">
+    <form>
+        <!-- modal remember me checkbox -->
+        <div class="checkbox">
+            <input type="checkbox" ng-model="adultData.rememberMe"><label class="pull-left">{{'REMEMBER ME' | translate}}</label>
+        </div>
+        <!-- modal footer buttons -->
+        <button class="btn btn-default" ng-click="isAdultCheck()">{{'OVER 18' | translate}}</button>
+        <button class="btn btn-warning" ng-click="dismiss()">{{'DISMISS' | translate}}</button>
+    </form>
+</div>

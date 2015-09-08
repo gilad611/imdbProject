@@ -1,37 +1,65 @@
-<div class="container">
+<div class="container" ng-if="movieReady">
     <div class="well">
         <div class="row">
-            <!-- inject allMovieData.tpl.html via directive -->
-                <div class="pull-left col-lg-12" ng-if="movieReady">
-                    <div class="row">
-                        <div class="col col-lg-4">
-                            <div class="center-block"><img class="img-responsive center-block" ng-src="{{ 'http://image.tmdb.org/t/p/w500/'+movieData.Poster }}"></div><hr>
-                            <button class="btn btn-default" ui-sref="trailer({movieId: movieData.id})"><span class="glyphicon glyphicon-play"></span> Watch Trailer</button>
-                        </div>
-                        <div class="col col-lg-4">
-                            <p><h4><u>{{movieData.Title}}</u></h4></p><hr>
-                            <p><strong>Year:</strong> {{movieData.Year}}</p>
-                            <p><strong>Plot:</strong> {{movieData.Plot}}</p><hr>
-                            <p><strong>Genre: </strong><span ng-repeat="genre in movieData.Genre track by $index">{{genre.name}} </span></p>
-                            <p><strong>IMDB Rating:</strong>{{movieData.imdbRating}}</p>
-                        </div>
-                        <div class="col col-lg-4">
-                            <div class="well">
-                                <p><u><strong>Cast Members</strong></u></p>
-                                <div class="component photogrid clearfix">
-                                    <a ui-sref="person({personId: castMember.id})" ng-repeat="castMember in cast track by $index">
-                                        <img data-toggle="tooltip"
-                                             ng-src="{{ 'http://image.tmdb.org/t/p/w500/'+castMember.profile_path }}"
-                                             alt="{{castMember.name}}"
-                                             tooltip-trigger="mouseenter"
-                                             tooltip="{{castMember.name}}"
-                                             class="img-rounded"></a>
-                                </div>
-                            </div>
-                        </div>
+
+            <!-- img column -->
+            <div class="col col-lg-4">
+                    <!-- movie poster img -->
+                    <img class="img-responsive center-block" fallback-src ng-src="{{ movieData.Poster }}"/>
+                <hr>
+                <!-- go to trailer button -->
+                <button class="btn btn-default" ui-sref="trailer({movieId: movieData.id})"><span class="glyphicon glyphicon-play"></span> {{'WATCH TRAILER' | translate}}</button>
+            </div>
+            <!-- /img column -->
+
+            <!-- movie data column -->
+            <div class="col col-lg-4">
+                <!-- movie title -->
+                <p><h4><u>{{movieData.Title}}</u></h4></p><hr>
+                <p>
+                <!-- movie year -->
+                <strong>{{'YEAR' | translate}}:</strong>
+                {{movieData.Year}}
+                </p>
+                <!-- movie plot -->
+                <p><strong>{{'PLOT' | translate}}:</strong>
+                    {{movieData.Plot}}
+                </p><hr>
+                <!-- movie genres -->
+                <p><strong>{{'GENRES' | translate}}:</strong>
+                    <!-- ngRepeat - display movie genres -->
+                    <span ng-repeat="genre in ::movieData.Genre track by $index">
+                        {{::genre.name}}
+                    </span>
+                </p>
+                <!-- movie rating (via directive) -->
+                <p>
+                    <rating ng-model="movieData.imdbRating" max="10" readonly="true" on-leave="overStar = null"></rating>
+                </p>
+            </div>
+            <!-- /movie data column -->
+
+            <!-- cast members data column -->
+            <div class="col col-lg-4">
+                <div class="well">
+                    <!-- cast members title -->
+                    <p><u><strong>{{'CAST MEMBERS' | translate}}</strong></u></p>
+                    <div class="component photogrid center-block clearfix">
+                        <!-- ngRepeat - display cast members images -->
+                        <a ui-sref="person({personId: castMember.id})" ng-repeat="castMember in ::cast track by $index">
+                            <img fallback-src
+                                 data-toggle="tooltip"
+                                 ng-src="{{ castMember.profile_path }}"
+                                 alt="{{castMember.name}}"
+                                 tooltip-trigger="mouseenter"
+                                 tooltip="{{castMember.name}}"
+                                 class="img-rounded"/></a>
                     </div>
                 </div>
-            <a class="btn btn-default" ng-click="back()">Back</a>
+            </div>
+            <!-- /cast members data column -->
         </div>
     </div>
+    <!-- go back button -->
+    <a class="btn btn-block center-block" ng-click="back()">{{'BACK' | translate}}</a>
 </div>

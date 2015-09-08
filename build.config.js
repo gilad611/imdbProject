@@ -75,10 +75,14 @@ module.exports = {
         'vendor/angular-moment/angular-moment.js',
         'vendor/angular-ui-router-anim-in-out/anim-in-out.js',
         'vendor/lodash/lodash.js',
-        'vendor/angular-youtube-mb/dist/angular-youtube-embed.min.js'
+        'vendor/angular-youtube-mb/dist/angular-youtube-embed.min.js',
+        'vendor/angular-translate/angular-translate.js',
+        'vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+        'vendor/async/dist/async.js'
     ],
     css: [
-        'vendor/angular-ui-router-anim-in-out/css/anim-in-out.css'
+        'vendor/angular-ui-router-anim-in-out/css/anim-in-out.css',
+        'vendor/bootstrap-language/languages.css'
     ],
     assets: []
   }

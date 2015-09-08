@@ -1,0 +1,80 @@
+@direction: right;
+
+.rtl{
+  body{
+    direction: @direction;
+    text-align: @direction;
+  }
+
+  .modal-body {
+    position: relative;
+    text-align: @direction;
+    padding: 20px;
+  }
+
+  .checkbox label, .radio label {
+    margin-right: 20px !important;
+  }
+
+  .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+    float: @direction;
+  }
+
+  .pull-left{
+    float: @direction !important;
+  }
+
+  /* Larger desktops */
+  @media (min-width: 1600px){
+    .col-lg-4{
+      float: @direction;
+      direction: @direction;
+      text-align: @direction;
+    }
+  }
+
+  /* Large desktops and laptops */
+  @media (min-width: 1200px) and (max-width: 1599px){
+    .col-lg-4{
+      float: @direction;
+      direction: @direction;
+      text-align: @direction;
+    }
+  }
+
+  /* Landscape tablets and medium desktops */
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .col-lg-4{
+      float: @direction;
+      direction: @direction;
+      text-align: @direction;
+    }
+  }
+
+  /* Portrait tablets and small desktops */
+  @media (min-width: 768px) and (max-width: 991px) {
+    .col-lg-4{
+      float: @direction;
+      direction: @direction;
+      text-align: @direction;
+    }
+  }
+
+  /* Landscape phones and portrait tablets */
+  @media (max-width: 767px) {
+    .col-lg-4{
+      float: @direction;
+      direction: @direction;
+      text-align: @direction;
+    }
+  }
+
+  /* Portrait phones and smaller */
+  @media (max-width: 480px) {
+    .col-lg-4 {
+      float: @direction;
+      direction: @direction;
+      text-align: @direction;
+    }
+  }
+}

@@ -2,7 +2,7 @@ module.exports = function (grunt) {
 
     /**
      * Load required Grunt tasks. These are installed based on the versions listed
-     * in `package.json` when you do `npm install` in this directory.
+     * in `he.json` when you do `npm install` in this directory.
      */
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-less');
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
      */
     var taskConfig = {
         /**
-         * We read in our `package.json` file so we can access the package name and
+         * We read in our `he.json` file so we can access the package name and
          * version. It's already there, so we don't repeat ourselves here.
          */
         pkg: grunt.file.readJSON("package.json"),
@@ -258,6 +258,7 @@ module.exports = function (grunt) {
                 },
                 options: {
                     cleancss: true,
+                    sourceMap: true,
                     compress: true
                 }
             }
@@ -376,7 +377,7 @@ module.exports = function (grunt) {
 		     */
 		    jssrc: {
 			    files: ['<%= app_files.js %>'],
-			    tasks: [ 'jshint:src', 'copy:build_appjs' ],
+			    tasks: [ 'copy:build_appjs' ],
 			    options: {
 				    livereload: false,
 				    spawn: false

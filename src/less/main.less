@@ -3,6 +3,8 @@
 @import "variables";
 @import "bootswatch";
 @import "../app/trailer/trailer";
+@import "app-rtl";
+@import "../common/shortMovieData/shortMovieData";
 
 /* Larger desktops */
 @media (min-width: 1600px){
@@ -11,7 +13,7 @@
     }
 
     .panel-default {
-        height: 410px !important;
+        height: 380px !important;
         width: 190px !important;
     }
     .col-lg-2 {
@@ -41,7 +43,7 @@
     }
 
     .panel-default {
-        height: 410px !important;
+        height: 380px !important;
         width: 190px !important;
     }
 
@@ -68,11 +70,12 @@
     }
 
     .panel-default {
-        height: 410px !important;
+        height: 380px !important;
         width: 190px !important;
     }
     .photogrid img{
         width:64px;
+        margin: 0 5px 5px 0;
     }
     .loading {
         position: fixed;
@@ -92,11 +95,12 @@
     }
 
     .panel-default {
-        height: 410px !important;
+        height: 380px !important;
         width: 190px !important;
     }
     .photogrid img{
         width:60px;
+        margin: 0 5px 5px 0;
     }
     .loading {
         position: fixed;
@@ -126,11 +130,12 @@
         max-width: 150px !important;
     }
     .panel-default {
-        height: 410px !important;
+        height: 320px !important;
         width: 150px !important;
     }
     .photogrid img{
         width:60px;
+        margin: 0 5px 5px 0;
     }
     .loading {
         position: fixed;
@@ -162,7 +167,7 @@
         max-width: 100px !important;
     }
     .panel-default {
-        height: 350px !important;
+        height: 230px !important;
         width: 90px !important;
     }
     .panel-body {
@@ -174,6 +179,7 @@
     }
     .photogrid img{
         width:60px;
+        margin: 0 5px 5px 0;
     }
     .loading {
         position: fixed;
@@ -321,3 +327,11 @@
     }
 }
 
+.text-center {
+    text-align: center;
+    padding-top: 5px !important;
+}
+
+.lang-lg:before, .lang-sm:before, .lang-xs:before {
+    content: '\0000A0' !important;
+}
